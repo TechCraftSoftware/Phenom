@@ -59,6 +59,14 @@
             transform: scale(1.05);
             transition: transform 0.3s ease;
         }
+        .cursor-pointer { cursor: pointer; }
+    
+        .faq-answer {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease;
+        }
+    
 /* Header text color */
 .text-indigo-700 { color: rgb(106, 16, 129); }
         .text-indigo-700 {
@@ -180,22 +188,35 @@ We are Phenomenons 💜🚀
          <section class="bg-white shadow-lg rounded-lg max-w-3xl mx-auto p-8" data-aos="fade-up">
             <h2 class="text-2xl sm:text-3xl font-semibold text-indigo-700 mb-4">Frequently Asked Questions</h2>
             <div class="text-left">
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg">Is Phenom a Legit Platform or a Scam?</h3>
-                    <p>Phenom is a transformative platform that combines Web3.0, artificial intelligence, and a pioneering affiliate marketing model to empower communities across Africa.</p>
+        
+                <div class="faq-item mb-6">
+                    <h3 class="font-bold text-lg cursor-pointer" onclick="toggleAnswer(this)">Is Phenom a Legit Platform or a Scam?</h3>
+                    <div class="faq-answer">
+                        <p>Phenom is a transformative platform that combines Web3.0, artificial intelligence, and a pioneering affiliate marketing model to empower communities across Africa.</p>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg">How Does Phenom Affiliate Marketing Work?</h3>
-                    <p>Phenom provides a unique affiliate model where users can earn through referrals, helping to build a community of financially empowered individuals.</p>
+        
+                <div class="faq-item mb-6">
+                    <h3 class="font-bold text-lg cursor-pointer" onclick="toggleAnswer(this)">How Does Phenom Affiliate Marketing Work?</h3>
+                    <div class="faq-answer">
+                        <p>Phenom provides a unique affiliate model where users can earn through referrals, helping to build a community of financially empowered individuals.</p>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg">What Are the Benefits of Using Phenom?</h3>
-                    <p>Phenom offers tools and support that help users achieve financial independence, including a cutting-edge Web3.0 affiliate marketing system.</p>
+        
+                <div class="faq-item mb-6">
+                    <h3 class="font-bold text-lg cursor-pointer" onclick="toggleAnswer(this)">What Are the Benefits of Using Phenom?</h3>
+                    <div class="faq-answer">
+                        <p>Phenom offers tools and support that help users achieve financial independence, including a cutting-edge Web3.0 affiliate marketing system.</p>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h3 class="font-bold text-lg">How Can I Join Phenom?</h3>
-                    <p>You can join Phenom by registering through our website or contacting us directly for assistance with the sign-up process.</p>
+        
+                <div class="faq-item mb-6">
+                    <h3 class="font-bold text-lg cursor-pointer" onclick="toggleAnswer(this)">How Can I Join Phenom?</h3>
+                    <div class="faq-answer">
+                        <p>You can join Phenom by registering through our website or contacting us directly for assistance with the sign-up process.</p>
+                    </div>
                 </div>
+        
             </div>
             <!-- CTA Link -->
             <div class="text-center mt-8">
@@ -228,7 +249,24 @@ We are Phenomenons 💜🚀
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        function toggleAnswer(element) {
+            // Close any open answer
+            document.querySelectorAll('.faq-answer').forEach((answer) => {
+                if (answer !== element.nextElementSibling) {
+                    answer.style.maxHeight = null;
+                }
+            });
 
+            // Get the answer div for the clicked question
+            const answer = element.nextElementSibling;
+
+            // Toggle the max-height for smooth slide
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        }
     </script>
 </body>
 </html>
